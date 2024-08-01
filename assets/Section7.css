@@ -365,63 +365,77 @@ RESPONSIVE */
 
     }
     .textcontent h1 {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
+}
+.textcontent p{
+    font-size: 16px;
 }
 .sliderbanner {
-         
-            /* height: 82vh; */
+         /* 
+            height: 82vh; */
           
         }
-.slider {
-            width: 60%;
-            height: 60%;
-            margin-top: 3%;
-        }
-
 
 .textpart {
             color: aliceblue;
-            margin-top: 4%;
+            margin-top: 5%;
             width: 55%;
            
         }
 
         .textpart p {
-            width: 97%;
-           
+            width: 98%;
+       
         }
 
         .textpart h2 {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
          
         }
 
+
+        .slider {
+            width: 70%;
+            height: 68%;
+            margin-top: 0px;
+        }
+        .prev{
+            left: 0px;
+        }
+        .next{
+            right: 0px;
+        }
+
+
         .thirdheading span {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
         }
         
         
         .fourheading span{
-            font-size: 1.6rem;
+            font-size: 1.2rem;
         }
         
-
+            .foursection {
+        display: block;
+              /* height: 100vh; */
+    }
+  .mobilefoursection{
+      display: none;
+  }
         .fourcards {
     width: 90%;
-    margin-left: 3%;
+    margin-left: 2%;
+    margin-top: 0px;
 }
-
-  .fourcards img {
-    width: 100%; /* Ensure images are responsive */
-    max-width: 240px; /* Set a maximum width for images */
-    height: 300px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.fivesection{
+    margin-top: 0px;
+    height: 70vh;
+  /* padding-top: 130px; */
 }
-
 
 .fiveheading span{
-            font-size: 1.6rem;
+            font-size: 1.2rem;
         }
         
         .fiveheading .game{
@@ -429,10 +443,20 @@ RESPONSIVE */
       
       }
       .fivecards {
-    width: 90%;
-    margin-left: 3%;
+    width: 80%;
+    margin-left: 8%;
 }
-  .card {
+.cardheading  h2{
+ font-size: 1.0rem;
+}
+  .cardheading  span{
+ font-size: 1.0rem;
+}
+.fivecards span{
+   font-size: 1.0rem;
+}
+
+    .card {
 
             transform-style: preserve-3d;
             transform-origin: center right;
