@@ -850,6 +850,17 @@ RESPONSIVE */
        
 
   }
+
+@media(min-width: 1025px){
+  .fourcards img {
+    width: 100%; /* Ensure images are responsive */
+    max-width: 240px; /* Set a maximum width for images */
+    height: 300px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+}
+
   @media(min-width: 320px) and (max-width: 400px){
                 
     .textcontent h1{
