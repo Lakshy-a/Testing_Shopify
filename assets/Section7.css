@@ -359,7 +359,7 @@
 RESPONSIVE */
 
 
-@media (min-width: 1024px) and (max-width: 1515px){
+@media (min-width: 1024px){
     .textcontent{
         width: 70%;
 
@@ -427,6 +427,7 @@ RESPONSIVE */
     width: 90%;
     margin-left: 2%;
     margin-top: 0px;
+          
 }
 .fivesection{
     margin-top: 0px;
