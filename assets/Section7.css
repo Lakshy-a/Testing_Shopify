@@ -411,6 +411,14 @@ RESPONSIVE */
     margin-left: 3%;
 }
 
+  .fourcards img {
+    width: 100%; /* Ensure images are responsive */
+    max-width: 240px; /* Set a maximum width for images */
+    height: 300px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
 
 .fiveheading span{
             font-size: 1.6rem;
