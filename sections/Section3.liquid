@@ -1,0 +1,153 @@
+{% schema %}
+{
+  "name": "Section 3",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title",
+      "default": "Durex playthings turn on game card for couples"
+    },
+    {
+      "type": "textarea",
+      "id": "description_text",
+      "label": "Description",
+      "default": "Are you ready to spice up your game nights with 'Turn On' - the flirty card game that takes Truth or Dare to the next level? With 60 cards filled with fun, flirty and risqué questions and actions, it is crafted for you to express your deepest desires and then bring them alive. As you lay the cards, get ready to lay your desires for them to know all your secrets. There are no losers in this game, only winners. So, come together with your partner, and let the moments unfold with 'Turn On'!"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide1",
+      "label": "Slide 1 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide2",
+      "label": "Slide 2 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide3",
+      "label": "Slide 3 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide4",
+      "label": "Slide 4 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide5",
+      "label": "Slide 5 Image"
+    },
+    {
+      "type": "text",
+      "id": "mrp",
+      "label": "MRP",
+      "default": "Rs.1999/"
+    },
+    {
+      "type": "text",
+      "id": "sp",
+      "label": "Selling Price",
+      "default": "Rs.999/-"
+    },
+    {
+      "type": "text",
+      "id": "discount",
+      "label": "Discount",
+      "default": "50% OFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'Section3.css' | asset_url | stylesheet_tag }}
+
+<div class="section3Container">
+  <div class="mainSliderContainer">
+    <div class="slider-container">
+      <div class="slides">
+        <div class="slide">
+          <img src="{{ section.settings.slide1 | img_url: 'master' }}" alt="Slide 1" height="" width="">
+        </div>
+        <div class="slide">
+          <img src="{{ section.settings.slide2 | img_url: 'master' }}" alt="Slide 2" height="" width="">
+        </div>
+        <div class="slide">
+          <img src="{{ section.settings.slide3 | img_url: 'master' }}" alt="Slide 3 " height="" width="">
+        </div>
+        <div class="slide">
+          <img src="{{ section.settings.slide4 | img_url: 'master' }}" alt="Slide 4" height="" width="">
+        </div>
+        <div class="slide">
+          <img src="{{ section.settings.slide5 | img_url: 'master' }}" alt="Slide 5" height="" width="">
+        </div>
+      </div>
+      <div class="slider-nav slider-nav-prev"><span class="material-symbols-outlined"><</span></div>
+      <div class="slider-nav slider-nav-next"><span class="material-symbols-outlined">></span></div>
+    </div>
+    <div class="dots"></div>
+  </div>
+
+  <div class="contentContainer">
+    <h3>{{ section.settings.title_text }}</h3>
+    <p>{{ section.settings.description_text }}</p>
+    <div class="priceContainer">
+      <span class="mrpContainer">{{ section.settings.mrp }}</span>
+      <span class="spContainer">{{ section.settings.sp }}</span>
+      <span class="offContainer">{{ section.settings.discount }}</span>
+    </div>
+    <button class="cartContainer">Add To Cart</button>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slide').length;
+  const dotsContainer = document.querySelector('.dots');
+  let currentSlide = 0;
+
+  // Create dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => setCurrentSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = document.querySelectorAll('.dot');
+
+  function setCurrentSlide(index) {
+    currentSlide = index;
+    updateSlider();
+  }
+
+  function updateSlider() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  document.querySelector('.slider-nav-prev').addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  });
+
+  document.querySelector('.slider-nav-next').addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+  });
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+  }, 3000);
+</script>

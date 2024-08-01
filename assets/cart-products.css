@@ -1,0 +1,25 @@
+/* For large displays (desktop) */
+@media (min-width: 992px) {
+  .cart-items-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .cart-item {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust width as needed */
+    margin-bottom: 20px;
+  }
+}
+
+/* For smaller displays (tablet and below) */
+@media (max-width: 991px) {
+  .cart-item {
+    flex: 0 0 calc(100% - 20px); /* Adjust width as needed */
+    margin-bottom: 20px;
+  }
+}
+
+/* Styling for cart item details */
+.item-details {
+  text-align: center; /* Align text center */
+}

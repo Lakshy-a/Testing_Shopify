@@ -1,0 +1,84 @@
+<div class="five-right">
+  <p class="right heading">{{ section.settings.mainHeading }}</p>
+  <h4 class="right">{{ section.settings.subHeading1 }}</h4>
+  <p>{{ section.settings.anotherparaFiveOne }}</p>
+
+  <h4 class="right">{{ section.settings.subHeading2 }}</h4>
+  <p>{{ section.settings.anotherparaFiveTwo }}</p>
+
+  <h4 class="right">{{ section.settings.subHeading3 }}</h4>
+  <p>{{ section.settings.anotherparaFiveThree }}</p>
+
+  <h4 class="right">{{ section.settings.subHeading4 }}</h4>
+  <p>
+    {{ section.settings.anotherparaFiveFour }}
+  </p>
+
+  <h4 class="right">{{ section.settings.subHeading5 }}</h4>
+  <p>{{ section.settings.anotherparaFiveFive }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "testbanner5",
+  "tag": "section",
+  "class": "testbanner3-right",
+  "settings": [
+    {
+      "type": "text",
+      "id": "mainHeading",
+      "label": "Heading"
+    },
+    {
+           "type": "text",
+           "id": "subHeading1",
+           "label": "Sub Heading 1"
+         },
+     {
+           "type": "text",
+           "id": "anotherparaFiveOne",
+           "label": "Para 1"
+         },
+    {
+           "type": "text",
+           "id": "subHeading2",
+           "label": "Sub Heading 2"
+         },
+    {
+           "type": "text",
+           "id": "anotherparaFiveTwo",
+           "label": "Para 2"
+         },
+    {
+           "type": "text",
+           "id": "subHeading3",
+           "label": "Sub Heading 3"
+         },
+    {
+           "type": "text",
+           "id": "anotherparaFiveThree",
+           "label": "Para 3"
+         },
+    {
+           "type": "text",
+           "id": "subHeading4",
+           "label": "Sub Heading 4"
+         },
+    {
+           "type": "text",
+           "id": "anotherparaFiveFour",
+           "label": "Para 4"
+         },
+    {
+           "type": "text",
+           "id": "subHeading5",
+           "label": "Sub Heading 5"
+         },
+    {
+           "type": "text",
+           "id": "anotherparaFiveFive",
+           "label": "Para 5"
+         }
+  ]
+}
+{% endschema %}

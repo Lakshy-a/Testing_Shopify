@@ -1,0 +1,127 @@
+<div class="main">
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner s">
+      {% for block in section.blocks %}
+        {% if block.type == 'carousel_image' %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img class="d-block" src="{{ block.settings.image | image_url: 'large' }}" height="" width="">
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="secondpart">
+    <div>
+      <h3>{{ section.settings.product_heading }}</h3>
+      <p class="inercontent1">{{ section.settings.product_description }}</p>
+    </div>
+    <br>
+    <br>
+    <div class="price">
+      <s>{{ section.settings.original_price }}</s>&nbsp;&nbsp;&nbsp;&nbsp;<span>
+        {{- section.settings.discounted_price -}}
+      </span>
+    </div>
+    <div class="shopnowdiv">
+      <button class="shopnow">{{ section.settings.shop_now_text }}</button>
+      <div>
+        <p>{{ section.settings.quantity_label }}</p>
+        <div class="quantity">
+          <button>-</button>
+          <p>1</p>
+          <button>+</button>
+        </div>
+      </div>
+    </div>
+    <div class="icons">
+      {% for block in section.blocks %}
+        {% if block.type == 'icon_image' %}
+          <div class="icon">
+            <img src="{{ block.settings.icon_image | img_url: 'thumb' }}" alt="Icon Image">
+            <p>{{ block.settings.icon_text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "CarouselAndProductSection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_heading",
+      "label": "Product Heading",
+      "default": "HANDS-OFF-PLAYFUL RESTRAINTS"
+    },
+    {
+      "type": "text",
+      "id": "product_description",
+      "label": "Product Description",
+      "default": "Embrace your fantasies and dive into the world of anticipation thrill and sensory play. Deepen your connection by letting go of control and letting partner take the lead and unlock new ways to play. Wrist to wrist cuffed to experience your wildest desires as surrender to your partner and your fantasies."
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "RS.3499/-"
+    },
+    {
+      "type": "text",
+      "id": "discounted_price",
+      "label": "Discounted Price",
+      "default": "RS.1999/-"
+    },
+    {
+      "type": "text",
+      "id": "shop_now_text",
+      "label": "Shop Now Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "text",
+      "id": "quantity_label",
+      "label": "Quantity Label",
+      "default": "QUANTITY:"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "carousel_image",
+      "name": "Carousel Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "icon_image",
+      "name": "Icon Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+          {
+      "type": "text",
+      "id": "icon_text",
+      "label": "Icon Text"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

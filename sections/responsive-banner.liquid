@@ -1,0 +1,65 @@
+{% schema %}
+{
+  "name": "Different Banners",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Responsive Banner"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="responsive-banner-section">
+  <img
+    src="{{ section.settings.desktop_image | image_url }}"
+    alt="Banner Image"
+    class="responsive-banner-image"
+    data-desktop="{{ section.settings.desktop_image | image_url }}"
+    data-mobile="{{ section.settings.mobile_image | image_url }}"
+    width=""
+    height=""
+  >
+</div>
+
+<style>
+  .responsive-banner-section {
+    text-align: center;
+  }
+  .responsive-banner-section img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function updateBannerImage() {
+      var bannerImage = document.querySelector('.responsive-banner-image');
+      var width = window.innerWidth;
+
+      if (width < 768) {
+        bannerImage.src = bannerImage.getAttribute('data-mobile');
+      } else {
+        bannerImage.src = bannerImage.getAttribute('data-desktop');
+      }
+    }
+
+    // Initial check
+    updateBannerImage();
+
+    // Update on resize
+    window.addEventListener('resize', updateBannerImage);
+  });
+</script>

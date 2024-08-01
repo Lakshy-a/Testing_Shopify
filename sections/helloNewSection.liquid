@@ -1,0 +1,353 @@
+{% schema %}
+{
+  "name": "Hello New Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "mainHeading",
+      "label": "Main Heading",
+      "default": "Main Heading"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "content_block",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Block Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Block description here."
+        }
+      ],
+    },
+    {
+      "type": "pro_tip",
+      "name": "Pro Tip",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "tip_image",
+          "label": "Tip Image"
+        },
+        {
+          "type": "text",
+          "id": "tip_image_alt",
+          "label": "Tip Image Alt Text"
+        },
+        {
+          "type": "text",
+          "id": "tip_text",
+          "label": "Tip Text"
+        }
+      ]
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Dynamic Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="upperDiv">
+  <h2 class="upperUpperDiv">{{ section.settings.mainHeading }}</h2>
+  <div class="upperMiddleDiv">
+    {% for block in section.blocks %}
+      <div class="middleClass">
+        <div class="middleClassImage">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: '500x' }}" alt="image">
+          {% else %}
+            <!-- <img src="default-image.jpg" alt="default image"> -->
+          {% endif %}
+        </div>
+        <h4 class="middleClassHeading">{{ block.settings.heading }}</h4>
+        <p class="middleClassDescription">{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="upperLowerDiv">
+    <div class="proTipHeading">PRO TIPS:</div>
+    <div class="lowerMost">
+      {% for block in section.blocks %}
+        {% if block.type == 'pro_tip' %}
+          <div class="proTips">
+            <img
+              src="{{ block.settings.tip_image | img_url: 'small' }}"
+              alt="{{ block.settings.tip_image_alt }}"
+              height="19px"
+              width=""
+            >
+            <p>{{ block.settings.tip_text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .upperDiv {
+    width: 100vw;
+    min-height: 100vh;
+    background: rgb(18, 2, 3);
+    background: linear-gradient(
+      94deg,
+      rgba(18, 2, 3, 1) 0%,
+      rgba(52, 7, 2, 1) 100%
+    );
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .upperUpperDiv {
+    color: rgb(198, 86, 80);
+    text-align: center;
+    padding: 30px 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    font-size: 8vw;
+  }
+
+  .upperMiddleDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    height: 60%;
+  }
+
+  .middleClass {
+    width: 80%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .middleClassImage img {
+    width: 100%;
+  }
+
+  .middleClassHeading {
+    width: 100%;
+    color: rgb(194, 83, 81);
+    text-align: center;
+    padding: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4vw;
+    font-weight: 600;
+  }
+
+  .middleClassDescription {
+    width: 100%;
+    color: rgb(191, 170, 155);
+    font-size: 3vw;
+    text-align: center;
+    padding: 0 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .upperLowerDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    color: white;
+    padding: 0 10px; /* Adjust padding for better spacing */
+  }
+
+  .lowerMost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+  }
+
+  .proTipHeading {
+    background-color: rgb(197, 85, 81);
+    color: white;
+    width: 30%;
+    max-width: 800px; /* Limit maximum width */
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    font-size: 4vw;
+    height:fit-content;
+  }
+
+  .proTips {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Limit maximum width */
+    margin-bottom: 10px;
+  }
+
+  .proTips img {
+    margin-right: 10px;
+  }
+
+  .proTips p {
+    flex: 1;
+    color: rgb(191, 170, 155);
+  }
+
+  .lowerMost{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (min-width: 480px) {
+    .upperUpperDiv {
+      font-size: 5vw;
+    }
+
+    .middleClassHeading {
+      font-size: 3vw;
+    }
+
+    .middleClassDescription {
+      font-size: 2vw;
+    }
+
+    .proTipHeading {
+      font-size: 3vw;
+      width: 30%;
+      height:fit-content;
+      height: fit-content;
+    }
+
+    .lowerMost{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .upperUpperDiv {
+      font-size: 3vw;
+    }
+
+    .upperMiddleDiv {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      height: 60%;
+    }
+
+    .middleClass {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+
+    .middleClassHeading {
+      font-size: 2vw;
+    }
+
+    .middleClassDescription {
+      font-size: 2vw;
+    }
+
+    .upperLowerDiv {
+      height: auto;
+    }
+
+    .lowerMost {
+      flex-direction: row;
+      justify-content: center;
+      width: 70%;
+    }
+
+    .lowerMost div {
+      width: 45%;
+      margin-bottom: 0;
+    }
+
+    .proTipHeading {
+      width: 20%;
+      font-size: 1.5vw;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:fit-content;
+    }
+
+    .proTips {
+      width: 70%;
+    }
+
+    .proTips p {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .upperUpperDiv {
+      font-size: 2.5vw;
+    }
+
+    .middleClass {
+      width: 22%;
+    }
+
+    .middleClassHeading {
+      font-size: 1.5vw;
+    }
+
+    .middleClassDescription {
+      font-size: 1vw;
+    }
+
+    .lowerMost {
+      margin-top: -22px;
+      display: flex;
+      justify-content: space-evenly;
+      width: 40%;
+    }
+
+    .proTips p {
+      font-size: 1.2vw;
+    }
+
+    .proTipHeading{
+      height:20px;
+      width: 30%;
+    }
+  }
+</style>

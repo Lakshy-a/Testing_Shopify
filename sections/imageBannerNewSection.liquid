@@ -1,0 +1,35 @@
+<img
+  src="{{ section.settings.desktop_banner_image | img_url: 'large' }}"
+  alt="Banner Image"
+  class="desktop-image bannerimage"
+>
+<img
+  src="{{ section.settings.mobile_banner_image | img_url: 'large' }}"
+  alt="Banner Image"
+  class="mobile-image bannerimage"
+>
+
+{% schema %}
+{
+  "name": "Banner Section",
+  "settings": [
+
+     {
+      "type": "image_picker",
+      "id": "desktop_banner_image",
+      "label": "Desktop Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner_image",
+      "label": "Mobile Banner Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

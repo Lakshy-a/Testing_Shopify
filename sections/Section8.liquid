@@ -1,0 +1,222 @@
+{% schema %}
+{
+  "name": "Product Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slider Title",
+      "default": "Product Slider"
+    },
+    {
+      "type": "number",
+      "id": "slides_per_view_mobile",
+      "label": "Slides per view (Mobile)",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "slides_per_view_desktop",
+      "label": "Slides per view (Desktop)",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="product-slider-section">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="product-slider-container">
+    <div class="product-slider-wrapper">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        {% if product %}
+          <div class="product-slide">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+              </div>
+              <h3>{{ product.title }}</h3>
+              <div class="rating">★★★★☆ {{ product.reviews_count }}</div>
+              <div class="price">
+                <span class="discount">Rs. {{ product.price | divided_by: 100 }}</span>
+                {% if product.compare_at_price > product.price %}
+                  <span class="discountOriginal">
+                    {{-
+                      product.compare_at_price
+                      | minus: product.price
+                      | times: 100
+                      | divided_by: product.compare_at_price
+                      | round: 0
+                    -}}
+                    % OFF</span
+                  >
+                  </br>
+                  <span class="old-price">Rs. {{ product.compare_at_price | divided_by: 100 }}</span>
+                {% endif %}
+              </div>
+              <a href="{{ product.url }}" class="btn">Add To Cart</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="nav-buttons">
+      <button class="prev-btn" onclick="scrollSlider(-1)">&#10094;</button>
+      <button class="next-btn" onclick="scrollSlider(1)">&#10095;</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-slider-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-slider-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    padding-bottom: 10px;
+  }
+
+  .product-slide {
+    display: inline-block;
+    flex: 0 0 calc(100% / {{ section.settings.slides_per_view_mobile }} - 10px); /* Show two slides on mobile */
+    margin: 0 5px;
+    box-sizing: border-box;
+  }
+
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: left;
+  }
+
+  .product-image {
+    width: 180px; /* Adjusted fixed width */
+    height: 150px; /* Fixed height */
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center the image container */
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the container without distortion */
+  }
+
+  .product-card h3, .product-card .rating, .product-card .price, .product-card .btn {
+    margin: 10px 0;
+  }
+
+  .product-card .rating {
+    color: darkblue;
+  }
+
+  .product-card .price {
+    font-weight: bold;
+  }
+
+  .product-card .discount {
+    color: black;
+    font-weight: 900;
+  }
+
+  .product-card .old-price {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  .product-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0a4e98;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .discountOriginal {
+    background-color: red;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 26px;
+  }
+
+  .nav-buttons {
+    display: none;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .prev-btn, .next-btn {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 50%;
+  }
+
+  .prev-btn:hover, .next-btn:hover {
+    background-color: #ddd;
+  }
+
+  @media (min-width: 768px) {
+    .product-slider-wrapper {
+      justify-content: space-between;
+      overflow-x: visible;
+    }
+
+    .product-slide {
+      flex: 1 0 calc(100% / {{ section.settings.slides_per_view_desktop }} - 20px);
+    }
+
+    .nav-buttons {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function scrollSlider(direction) {
+    var container = document.querySelector('.product-slider-wrapper');
+    var slideWidth = container.querySelector('.product-slide').clientWidth;
+    container.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+  }
+</script>

@@ -1,0 +1,26 @@
+{{ 'cart-products.css' | asset_url | stylesheet_tag }}
+
+<div class="cart-products-section">
+  <h2>Products in Your Cart</h2>
+  {% if cart.item_count == 0 %}
+    <p>Your cart is empty.</p>
+  {% else %}
+    <ul>
+      {% for item in cart.items %}
+        <li>
+          <img src="{{ item.product.featured_image | img_url: 'thumb' }}" alt="{{ item.product.title }}">
+          <p>{{ item.product.title }}</p>
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Price: {{ item.final_line_price | money }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Cart Products",
+  "settings": []
+}
+{% endschema %}

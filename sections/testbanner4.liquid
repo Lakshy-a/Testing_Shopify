@@ -1,0 +1,15 @@
+<img class="new_Image" src="{{ section.settings.video | img_url:'master'}}" alt="image" height="300px" width="600px">
+
+{% schema %}
+{
+"name": "testbanner4",
+"tag": "section",
+"class": "testbanner4",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "video",
+    "label": "video"
+  }]
+  }
+{% endschema %}

@@ -1,0 +1,25 @@
+<div class="two">
+  <p class="paraThree">{{ section.settings.title }}</p>
+  <br>
+  <p class="paraFour">{{ section.settings.description }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "testbanner2",
+  "tag": "section",
+  "class": "testbanner2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Header"
+    },
+     {
+           "type": "text",
+           "id": "description",
+           "label": "Title 1"
+    }
+  ]
+}
+{% endschema %}

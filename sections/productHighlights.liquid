@@ -1,0 +1,191 @@
+{% layout none %}
+{% schema %}
+{
+  "name": "Product Highlights",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "mainImage",
+      "label": "Main Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight_block",
+      "name": "Highlight Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Block Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Block description here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Highlights",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="lowerDiv">
+  <div class="leftLowerDiv">
+    <img
+      class="image"
+      src="{{ section.settings.mainImage | img_url: '500x' }}"
+      alt="image_one"
+      height="100px"
+      width="100px"
+    >
+  </div>
+  <div class="rightLowerDiv">
+    <h2 class="rightLowerFirst">PRODUCT HIGHLIGHTS</h2>
+    {% for block in section.blocks %}
+      <div class="hello">
+        <div class="highlightImage{{ forloop.index }}">
+          {% if block.settings.image %}
+            <img
+              src="{{ block.settings.image | img_url: '500x' }}"
+              alt="highlightImage{{ forloop.index }}"
+              height="50px"
+              width="60px"
+            >
+          {% else %}
+            <img src="default-image.jpg" alt="default image" height="70px" width="80px">
+          {% endif %}
+        </div>
+        <div>
+          <h4 class="highlightsHeading{{ forloop.index }}">{{ block.settings.heading }}</h4>
+          <p class="description{{ forloop.index }}">{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .lowerDiv {
+    width: 100vw;
+    background-color: rgb(248, 238, 229);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .leftLowerDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 470px;
+    height: auto;
+    object-fit: fill;
+  }
+
+  .rightLowerDiv {
+    width: 100%;
+  }
+
+  .hello {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 85%;
+  }
+
+  .rightLowerFirst {
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .highlightsHeading1,
+  .highlightsHeading2,
+  .highlightsHeading3,
+  .highlightsHeading
+  {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .description1,
+  .description2,
+  .description3 {
+    font-weight: bold;
+  }
+
+  @media (min-width: 768px) {
+    .lowerDiv {
+      flex-direction: row;
+      height: 100vh;
+      padding: 0;
+    }
+
+    .leftLowerDiv {
+      width: 45%;
+      height: 80%;
+      margin-bottom: 0;
+    }
+
+    .rightLowerDiv {
+      width: 55%;
+      height: 80%;
+    }
+
+    .rightLowerFirst {
+      text-align: left;
+      font-size: 35px;
+    }
+
+    .hello {
+      margin-bottom: 30px;
+    }
+
+    .hello img {
+      object-fit: fill;
+    }
+
+    .highlightsHeading1,
+    .highlightsHeading2,
+    .highlightsHeading3,
+    .highlightsHeading
+    {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .description1,
+    .description2,
+    .description3 {
+      font-weight: bold;
+    }
+  }
+</style>

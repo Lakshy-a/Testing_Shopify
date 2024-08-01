@@ -1,0 +1,126 @@
+{% schema %}
+{
+  "name": "Borosil Mobile Menu",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "menu_item",
+      "name": "Menu Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "subitems",
+          "label": "Subitems (comma separated)"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Mobile Menu"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="container">
+  <div id="mySidenav" class="sidenav">
+    <a id="buttonClose" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div class="upperMostDiv">
+      <div class="borosilDiv">
+        <img class="logo" src="{{ 'borosilLogo.png' | asset_url }}" alt="borosil image" height="" width="">
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="equalDiv div{{ forloop.index }} nav-item">
+        <div class="flexDiv" style="background-color: {{ block.settings.background_color }}">
+          <div class="left1">
+            <div class="insideLeft">
+              <div class="insideText" style="color: {{ block.settings.text_color }}">{{ block.settings.title }}</div>
+              <div class="insideArrow">
+                <img
+                  onclick="toggleBox('box{{ forloop.index }}')"
+                  src="{{ 'arrow.png' | asset_url }}"
+                  alt="Arrow Image"
+                  height="100%"
+                  width="100%"
+                  style="color: aliceblue; cursor: pointer"
+                >
+              </div>
+            </div>
+          </div>
+          <div class="right1">
+            <img
+              class="newImage"
+              src="{{ block.settings.image | image_url}}"
+              alt="{{ block.settings.title }} Image"
+              width="90px"
+              height="90px"
+            >
+          </div>
+        </div>
+        <div id="box{{ forloop.index }}" class="box">
+          <div class="hiddenDiv1">
+            <div class="kitchenAppliancesHeading">
+              <div>{{ block.settings.title }}</div>
+              <a href="#">View All</a>
+            </div>
+            {% assign subitems = block.settings.subitems | split: ',' %}
+            {% for subitem in subitems %}
+              <div class="kitchenAppliancesSubHeading">
+                <div>{{ subitem }}</div>
+                <div>
+                  <a href="#" class="rightArrow">
+                    <span class="material-symbols-outlined" style="color: grey; font-size: 10px"
+                      >arrow_forward_ios</span
+                    >
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <nav class="navBar">
+    <div class="insideDiv">
+      <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    <div class="logoDiv">
+      <div class="logoInsideDiv">
+        <img
+          class="logologo"
+          src="{{ 'borosilLogo.png' | asset_url }}"
+          alt="borosil image"
+          width=""
+          height=""
+        >
+      </div>
+    </div>
+  </nav>
+</div>

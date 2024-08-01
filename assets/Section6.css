@@ -1,0 +1,918 @@
+<style>
+        /* Base styles */
+       body {
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .topbanner {
+            max-width: 100%;
+        }
+
+        .topbanner img {
+            width: 100%;
+        }
+
+        .textcontent {
+            text-align: center;
+            /* background-color: aqua; */
+            margin: 3% auto; 
+            width: 54%; 
+            font-family: sans-serif;
+        }
+
+        .textcontent h1 {
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            font-weight: 1000;
+            margin: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .textcontent p {
+            width: 97%;
+            font-size: 20px;
+        }
+
+        .sliderbanner {
+            display: flex;
+            /* height: 62vh; */
+            background-color: black;
+            padding: 0px;
+          padding-bottom: 20px;
+        }
+
+        .s {
+            width: 45%;
+            /* background-color: aquamarine; */
+            /* margin-top: 1%; */
+            position: relative;
+        }
+
+        .slider {
+            width: 60%;
+            height: 64%;
+            overflow: hidden;
+            position: relative; /* Ensure positioning context for buttons */
+            margin: auto; /* Center the slider */
+            margin-right: 10%;
+            margin-top: 1%;
+        }
+
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .prev,.next,.cardprev,.cardnext {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.1);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 1;
+        }
+
+        .prev {
+            left: 10px; /* Adjust left position */
+        }
+
+        .next {
+            right: 10px; /* Adjust right position */
+        }
+       
+        /* Slider Dots */
+        .dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+            margin-left: 16%;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            margin: 0 5px;
+            background-color: brown;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .active-dot {
+            background-color: white;
+        }
+
+        /* Text Part */
+        .textpart {
+            color: aliceblue;
+            margin-top: 2%;
+            width: 55%;
+            /* background-color: green; */
+        }
+
+        .textpart p {
+            width: 89%;
+            font-size: 16px;
+        }
+
+        .textpart h2 {
+            font-size: 1.9rem;
+            /* margin-bottom: 0; */
+        }
+
+        /* Price Part */
+        .pricepart {
+            display: flex;
+            column-gap: 10px;
+            margin-top: 48px;
+        }
+
+        .pricepart b, s {
+            font-size: 22px;
+        }
+
+        .pricepart span {
+            background-color: brown;
+            color: white;
+            padding: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        
+        .thirdsection {
+            width: 100%;
+            height: 92vh;
+        }
+
+        .thirdheading {
+            display: flex;
+            height: 20%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .thirdheading span {
+            font-size: 2.2rem;
+            font-weight: 1000;
+            text-align: center;
+        }
+
+
+        .videopart {
+            width: 100%;
+            height: 80%;
+            background-color: black;
+            box-sizing: border-box;
+            padding: 4px;
+        }
+
+        .innervideopart {
+            width: 50%;
+            /* max-width: 80%; */
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .innervideopart video {
+            width: 100%;
+            height: 100%;
+        }
+        .mobilefoursection{
+             display: none;
+        }
+        
+        .foursection{
+            height: 100vh;
+            width: 100%;
+        }
+        .fourheading{
+            display: flex;
+            flex-direction: column;
+            height: 30%;
+            justify-content: center;
+        
+        }
+        .fourheading span{
+            font-size: 2.2rem;
+            font-weight: 1000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+
+        .fourcards {
+    display: flex;
+    justify-content: space-around; /* Distribute space around the cards */;
+    padding: 20px;
+    /* background-color: blueviolet; */
+   
+    margin-left: 15%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 30%; /* Adjust width as needed */
+}
+
+.fourcards img {
+    width: 100%; /* Ensure images are responsive */
+    max-width: 240px; /* Set a maximum width for images */
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.fourcards h2 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 10px 0;
+   font-weight: 900;
+}
+
+.fourcards span {
+    font-size: 1.5rem;
+}
+.cardheading{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.fivesection{
+            height: 70vh;
+            width: 100%;
+            margin-top: 3%;
+        }
+        .fiveheading{
+            display: flex;
+            flex-direction: column;
+            height: 30%;
+            justify-content: center;
+        
+        }
+        .fiveheading span{
+            font-size: 2.2rem;
+            font-weight: 1000;
+            text-align: center; 
+            text-transform: uppercase;
+        }
+        
+        .fiveheading .game{
+        font-weight: 1000;
+        font-size: 3rem;
+      
+      }
+      .fiveheading span {
+            margin: 0;
+            padding: 0;
+        }
+        .fivecards {
+    display: flex;
+    justify-content: space-around; /* Distribute space around the cards */
+    padding: 20px;
+    /* background-color: blueviolet; */
+    width: 74%;
+    height: 70%;
+    margin-left: 13%;
+}
+
+.fivecard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 34%; /* Adjust width as needed */
+}
+
+.fivecards img {
+    width: 100%; 
+    max-width: 80px; 
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.fivecards h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+   font-weight: 900;
+}
+
+.fivecards span {
+    font-size: 1.5rem;
+}
+.cardheading{
+    display: flex;
+    flex-direction: column;
+    
+}
+.textpart .addbtn {
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 18px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+           .cardheading span {
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+        /* .fivesection {
+    margin-top: 12%;
+}
+ */
+
+
+/* 
+RESPONSIVE */
+
+
+@media (min-width: 1024px) and (max-width: 1380px){
+    .textcontent{
+        width: 70%;
+
+    }
+    .textcontent h1 {
+        font-size: 1.6rem;
+}
+.sliderbanner {
+         
+            /* height: 82vh; */
+          
+        }
+.slider {
+            width: 60%;
+            height: 60%;
+            margin-top: 3%;
+        }
+
+
+.textpart {
+            color: aliceblue;
+            margin-top: 4%;
+            width: 55%;
+           
+        }
+
+        .textpart p {
+            width: 97%;
+           
+        }
+
+        .textpart h2 {
+            font-size: 1.4rem;
+         
+        }
+
+        .thirdheading span {
+            font-size: 1.6rem;
+        }
+        
+        
+        .fourheading span{
+            font-size: 1.6rem;
+        }
+        
+
+        .fourcards {
+    width: 90%;
+    margin-left: 3%;
+}
+
+
+.fiveheading span{
+            font-size: 1.6rem;
+        }
+        
+        .fiveheading .game{
+        font-size: 2rem;
+      
+      }
+      .fivecards {
+    width: 90%;
+    margin-left: 3%;
+}
+  .card {
+
+            transform-style: preserve-3d;
+            transform-origin: center right;
+            transition: transform 1.5s;
+            height: 100%;
+        }
+
+        .card.is-changed {
+            transform: translateX(-100%) rotateY(-180deg);
+        }
+
+        .cardface {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 260px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 40px;
+            backface-visibility: hidden;
+            border-radius: 16px;
+        }
+        .cardback {
+            transform: rotateY(180deg);
+        }
+        .cardback img{
+              height: 100%;
+        }
+  
+
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .textcontent{
+        width: 70%;
+
+    }
+    .textcontent h1 {
+        font-size: 1.2rem;
+}
+.textcontent p{
+    font-size: 16px;
+}
+.sliderbanner {
+         /* 
+            height: 82vh; */
+          
+        }
+
+.textpart {
+            color: aliceblue;
+            margin-top: 5%;
+            width: 55%;
+           
+        }
+
+        .textpart p {
+            width: 98%;
+       
+        }
+
+        .textpart h2 {
+            font-size: 1.1rem;
+         
+        }
+
+
+        .slider {
+            width: 70%;
+            height: 68%;
+            margin-top: 0px;
+        }
+        .prev{
+            left: 0px;
+        }
+        .next{
+            right: 0px;
+        }
+
+
+        .thirdheading span {
+            font-size: 1.2rem;
+        }
+        
+        
+        .fourheading span{
+            font-size: 1.2rem;
+        }
+        
+            .foursection {
+        display: block;
+              /* height: 100vh; */
+    }
+  .mobilefoursection{
+      display: none;
+  }
+        .fourcards {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 0px;
+}
+.fivesection{
+    margin-top: 0px;
+    height: 70vh;
+  /* padding-top: 130px; */
+}
+
+.fiveheading span{
+            font-size: 1.2rem;
+        }
+        
+        .fiveheading .game{
+        font-size: 2rem;
+      
+      }
+      .fivecards {
+    width: 80%;
+    margin-left: 8%;
+}
+.cardheading  h2{
+ font-size: 1.0rem;
+}
+  .cardheading  span{
+ font-size: 1.0rem;
+}
+.fivecards span{
+   font-size: 1.0rem;
+}
+
+    .card {
+
+            transform-style: preserve-3d;
+            transform-origin: center right;
+            transition: transform 1.5s;
+            height: 100%;
+        }
+
+        .card.is-changed {
+            transform: translateX(-100%) rotateY(-180deg);
+        }
+
+        .cardface {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 260px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 40px;
+            backface-visibility: hidden;
+            border-radius: 16px;
+        }
+        .cardback {
+            transform: rotateY(180deg);
+        }
+        .cardback img{
+              height: 100%;
+        }
+}
+
+
+  @media (max-width: 767px){
+
+    .textcontent{
+        width: 70%;
+
+    }
+    .textcontent h1 {
+        font-size: 1.2rem;
+}
+.textcontent p{
+    font-size: 15px;
+    width: 99%;
+}
+.sliderbanner{
+    /* height: 140vh; */
+    flex-direction: column;
+}
+.s{
+    height: 50%;
+    width: 100%;
+    margin-top: 0px;
+}
+
+
+.textpart {
+            color: aliceblue;
+            margin-top: 5%;
+            width: 100%;
+           height: 50%;
+           margin-left: 4%;
+        }
+
+        .textpart p {
+            width: 89%;
+            font-size: 14px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .textpart h2 {
+            font-size: 1.3rem;
+             width: 70%;
+             margin-bottom: 0px;
+        }
+        .slider {
+            width: 100%;
+            height: 100%;
+            margin-top: 1%;
+            margin-right: 10%;
+        }
+        .dots{
+            margin-left: 0px;
+        }
+        .thirdheading span{
+            font-size: 1.2rem;
+        }
+        .mobilefoursection{
+           display: block;
+          padding-top: 10%;
+           /* height: 100vh; */
+           /* height: 150vh; */
+        }
+        .fourheading{
+            margin: auto;
+            width: 100%;
+        }
+        .fourheading span{
+            font-size: 1.2rem;
+        }
+
+
+        .fourcards  {
+            
+             height: 64%; /*94 */
+            overflow: hidden;
+            position: relative; /* Ensure positioning context for buttons */
+            margin: auto; /* Center the slider */
+            margin-right: 15%;
+            margin-top: 1%;
+          padding-bottom: 0px;
+                  padding-top: 0px;
+        margin-top: 10%;
+        }
+        .carddots{
+          text-align: center;
+          margin-top: 10px;
+        }
+    .carddots dot{
+         height: 8px;
+      width: 8px;
+    }
+        .cardslide{
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+ 
+        .prev,.next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.1);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 1;
+        } 
+
+        .cardprev {
+            left: 10px; 
+            color: black;
+            background-color: transparent;
+            font-size: 25px;
+        }
+
+        .cardnext {
+            right: 10px; 
+            color: black;
+            background-color: transparent;
+            font-size: 25px;
+        }
+        .foursection{
+            display: none;
+         
+        }
+        .fivecards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 10px;
+            margin-left: 9%;
+        }
+
+        .fivecard {
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        .cardimg{
+          height: 40%;
+        }
+        .fivecard img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cardheading {
+            margin-top: 10px;
+        }
+
+        .cardheading h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+       .cardheading span{
+        font-size: 1.2rem;
+       }
+        .fiveheading span{
+            font-size: 1.2rem;
+        }
+        
+        .fiveheading .game{
+        font-size: 2rem;
+      
+      }
+    .fivesection {
+    height: 100vh;
+      /* padding-top: 20px; */
+}
+    .textpart .addbtn {
+      margin-top: 10px;
+    }
+  }
+
+
+
+  @media(max-width: 559px){
+    .textcontent h1{
+        font-size: 1.4rem;
+    }
+    .textcontent p{
+        font-size: 12.5px;
+    }
+    .sliderbanner{
+        /* height: 110vh; */
+    }
+    .s{
+        height: 30%;
+        width: 100%;
+        margin-top: 0px;
+    }
+    .slider{
+        width: 100%;
+        height: 100%;
+        margin-top: 1%;
+        margin-right: 10%;
+    }
+    .dots{
+        margin-top: 0px;
+    }
+    .dot{
+        width: 8px;
+        height: 8px;
+    }
+    .textpart{
+        margin-top: 5%;
+        height: 70%;
+        margin-left: 4%;
+    }
+    .textpart h2{
+        font-size: 1.2rem;
+        width: 80%;
+        text-transform: uppercase;
+        margin-top: 40px;
+    }
+    .textpart p{
+        width: 89%;
+        font-size: 13.8px;
+        margin-top: 20px;
+    }
+    .thirdheading span{
+            font-size: 1.4rem;
+        }
+        .fourheading{
+            width: 90%;
+        }
+        .fourheading span{
+            font-size: 1.4rem;
+        }
+        .fourcards{
+           width: 80%;
+           margin-right: 5%;
+        }
+        .fivesection{
+            margin-top: 0px;
+
+        }
+        .fivecards{
+            padding-top: 0px;
+        }
+        .textpart .addbtn {
+            width: 150px;
+           font-size: 15px;
+
+        }
+       
+
+  }
+  @media(min-width: 320px) and (max-width: 400px){
+                
+    .textcontent h1{
+        font-size: 1.2rem;
+    }
+
+    .textpart{
+        margin-top: 5%;
+        height: 60%;
+        margin-left: 4%;
+    }
+    .textpart h2{
+        font-size: 1.0rem;
+    }
+    .textpart p{
+        font-size: 12px;
+    }
+    .thirdheading span{
+            font-size: 1.2rem;
+        }
+        .fourheading{
+            width: 94%;
+        }
+        .fourheading span{
+            font-size: 1.2rem;
+        }
+        .fourcards{
+           width: 100%;
+           margin-right: 5%;
+           padding: 0px;
+        }
+     
+           
+        .cardprev {
+            left: 0px; 
+        }
+
+        .cardnext {
+            right: 0px; 
+        }
+        .fivecards{
+            width: 80%;
+        }
+       
+        .cardheading h2 {
+            margin: 0;
+            font-size: 1.0rem;
+        }
+
+        .cardheading span{
+            font-size: 1.0rem;
+        }
+
+    .thirdsection{
+      height: 60vh;
+    }
+    .thirdheading{
+      height: 30%;
+    }
+    .videopart{
+      height: 70%;
+    }
+     .textpart .addbtn {
+      margin-top: 16px;
+    }
+  }
+    </style>

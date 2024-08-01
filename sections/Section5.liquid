@@ -1,0 +1,26 @@
+{% schema %}
+{
+  "name": "Video Section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Custom Section HTML -->
+<section class="bg-black py-1 h-fit flex items-center justify-center">
+  <video class="w-4/5 h-4/5 flex items-center justify-center" controls>
+    <source src="{{ section.settings.video_url | escape }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>

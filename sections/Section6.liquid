@@ -1,0 +1,326 @@
+{% schema %}
+{
+  "name": "Four Sections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "mobile_heading_top",
+      "label": "Mobile Top Heading",
+      "default": "Level up from Fun and Flirty to Risqué and"
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading_bottom",
+      "label": "Mobile Bottom Heading",
+      "default": "Feel the rush of your wildest dreams!"
+    },
+    {
+      "type": "text",
+      "id": "desktop_heading_top",
+      "label": "Desktop Top Heading",
+      "default": "Level up from Fun and Flirty to Risqué and"
+    },
+    {
+      "type": "text",
+      "id": "desktop_heading_bottom",
+      "label": "Desktop Bottom Heading",
+      "default": "Feel the rush of your wildest dreams!"
+    },
+    {
+      "type": "image_picker",
+      "id": "card1_image",
+      "label": "Card 1 Image"
+    },
+      {
+      "type": "image_picker",
+      "id": "card1back_image",
+      "label": "Card 1 back Image"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Card 1 Title",
+      "default": "Fun Cards"
+    },
+    {
+      "type": "text",
+      "id": "card1_subtitle1",
+      "label": "Card 1 Subtitle Line 1",
+      "default": "20 Fun Cards to spark"
+    },
+    {
+      "type": "text",
+      "id": "card1_subtitle2",
+      "label": "Card 1 Subtitle Line 2",
+      "default": "the romance"
+    },
+    {
+      "type": "image_picker",
+      "id": "card2_image",
+      "label": "Card 2 Image"
+    },
+      {
+      "type": "image_picker",
+      "id": "card2back_image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "card2_title",
+      "label": "Card 2 Title",
+      "default": "Flirty Cards"
+    },
+    {
+      "type": "text",
+      "id": "card2_subtitle1",
+      "label": "Card 2 Subtitle Line 1",
+      "default": "20 Flirty Cards to get up"
+    },
+    {
+      "type": "text",
+      "id": "card2_subtitle2",
+      "label": "Card 2 Subtitle Line 2",
+      "default": "close and intimate"
+    },
+    {
+      "type": "image_picker",
+      "id": "card3_image",
+      "label": "Card 3 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "card3back_image",
+      "label": "Card 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "card3_title",
+      "label": "Card 3 Title",
+      "default": "Risqué Cards"
+    },
+    {
+      "type": "text",
+      "id": "card3_subtitle1",
+      "label": "Card 3 Subtitle Line 1",
+      "default": "20 Risqué Cards to drive"
+    },
+    {
+      "type": "text",
+      "id": "card3_subtitle2",
+      "label": "Card 3 Subtitle Line 2",
+      "default": "each other wild"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<link rel="stylesheet" href="{{ 'Section6.css' | asset_url }}">
+
+<!-- Mobile Four Section -->
+<div class="mobilefoursection">
+  <div class="fourheading">
+    <span>{{ section.settings.mobile_heading_top }}</span>
+    <span>{{ section.settings.mobile_heading_bottom }}</span>
+  </div>
+  <div class="fourcards">
+    <div class="cardslide">
+      <div class="card">
+        <div>
+          <img src="{{ section.settings.card1_image | img_url: 'original' }}" alt="{{ section.settings.card1_title }}">
+        </div>
+        <div class="cardheading">
+          <h2>{{ section.settings.card1_title }}</h2>
+          <span>{{ section.settings.card1_subtitle1 }}</span>
+          <span>{{ section.settings.card1_subtitle2 }}</span>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <img src="{{ section.settings.card2_image | img_url: 'original' }}" alt="{{ section.settings.card2_title }}">
+        </div>
+        <div class="cardheading">
+          <h2>{{ section.settings.card2_title }}</h2>
+          <span>{{ section.settings.card2_subtitle1 }}</span>
+          <span>{{ section.settings.card2_subtitle2 }}</span>
+        </div>
+      </div>
+      <div class="card">
+        <div>
+          <img src="{{ section.settings.card3_image | img_url: 'original' }}" alt="{{ section.settings.card3_title }}">
+        </div>
+        <div class="cardheading">
+          <h2>{{ section.settings.card3_title }}</h2>
+          <span>{{ section.settings.card3_subtitle1 }}</span>
+          <span>{{ section.settings.card3_subtitle2 }}</span>
+        </div>
+      </div>
+    </div>
+    <button class="cardprev" onclick="cardmoveSlide(-1)">&#10094;</button>
+    <button class="cardnext" onclick="cardmoveSlide(1)">&#10095;</button>
+  </div>
+  <div class="carddots"></div>
+</div>
+<!-- Desktop Four Section -->
+<div class="foursection">
+  <div class="fourheading">
+    <span>{{ section.settings.desktop_heading_top }}</span>
+    <span>{{ section.settings.desktop_heading_bottom }}</span>
+  </div>
+  <div class="fourcards">
+    <div class="card">
+      <div class="cardface cardfront">
+        <img src="{{ section.settings.card1_image | img_url: 'original' }}" alt="{{ section.settings.card1_title }}">
+      </div>
+      <div class="cardface cardback">
+        <img
+          src="{{ section.settings.card1back_image | img_url: 'original' }}"
+          alt="{{ section.settings.card1_title }}"
+        >
+      </div>
+      <!--
+        <div class="cardheading">
+            <h2>{{ section.settings.card1_title }}</h2>
+            <span>{{ section.settings.card1_subtitle1 }}</span>
+            <span>{{ section.settings.card1_subtitle2 }}</span>
+        </div>
+      -->
+    </div>
+    <div class="card">
+      <div class="cardface cardfront">
+        <img src="{{ section.settings.card2_image | img_url: 'original' }}" alt="{{ section.settings.card2_title }}">
+      </div>
+      <div class="cardface cardback">
+        <img
+          src="{{ section.settings.card2back_image | img_url: 'original' }}"
+          alt="{{ section.settings.card1_title }}"
+        >
+      </div>
+      <!--
+        <div class="cardheading">
+            <h2>{{ section.settings.card2_title }}</h2>
+            <span>{{ section.settings.card2_subtitle1 }}</span>
+            <span>{{ section.settings.card2_subtitle2 }}</span>
+        </div>
+      -->
+    </div>
+    <div class="card">
+      <div class="cardface cardfront">
+        <img src="{{ section.settings.card3_image | img_url: 'original' }}" alt="{{ section.settings.card3_title }}">
+      </div>
+      <div class="cardface cardback">
+        <img
+          src="{{ section.settings.card3back_image | img_url: 'original' }}"
+          alt="{{ section.settings.card1_title }}"
+        >
+      </div>
+      <!--
+        <div class="cardheading">
+            <h2>{{ section.settings.card3_title }}</h2>
+            <span>{{ section.settings.card3_subtitle1 }}</span>
+            <span>{{ section.settings.card3_subtitle2 }}</span>
+        </div>
+      -->
+    </div>
+  </div>
+</div>
+
+<script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            const dots = document.querySelectorAll('.dot');
+
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            const offset = -currentSlide * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active-dot', i === currentSlide);
+            });
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        function createDots() {
+            const dotContainer = document.querySelector('.dots');
+            const totalSlides = document.querySelectorAll('.slide').length;
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => showSlide(i));
+                dotContainer.appendChild(dot);
+            }
+        }
+
+        createDots();
+        showSlide(currentSlide);
+</script>
+<script>
+        let fourcurrentSlide = 0;
+
+        function cardshowSlide(fourindex) {
+            const slides = document.querySelector('.cardslide');
+            const totalSlides = document.querySelectorAll('.card').length;
+            const dots = document.querySelectorAll('.dot');
+
+
+            if (fourindex >= totalSlides) {
+                fourcurrentSlide = 0;
+            } else if (fourindex < 0) {
+                fourcurrentSlide = totalSlides - 1;
+            } else {
+                fourcurrentSlide = fourindex;
+            }
+
+            const offset = -fourcurrentSlide * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active-dot', i === fourcurrentSlide);
+            });
+        }
+
+        function cardmoveSlide(step) {
+            cardshowSlide(fourcurrentSlide + step);
+        }
+
+        function createDots() {
+            const dotContainer = document.querySelector('.carddots');
+            const totalSlides = document.querySelectorAll('.card').length;
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => cardshowSlide(i));
+                dotContainer.appendChild(dot);
+            }
+        }
+
+        createDots();
+        cardshowSlide(fourcurrentSlide);
+</script>
+<Script>
+  var cards = document.querySelectorAll('.card'); var ischange = false;
+
+  cards.forEach((card) => { card.addEventListener('click', function () { if (!ischange) {
+  card.classList.add('is-changed'); ischange = true; } else { card.classList.remove('is-changed'); ischange = false;
+  setTimeout(() => { window.location.href = ""; }, 1500); } }); });
+</Script>

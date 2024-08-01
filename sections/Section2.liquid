@@ -1,0 +1,38 @@
+{% schema %}
+{
+  "name": "Section 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Crafted for your wildest dreams"
+    },
+    {
+      "type": "textarea",
+      "id": "content_text",
+      "label": "Content Text",
+      "default": "It all starts with a naughty glance, a whisper of anticipation. You laugh, tease and explore each other's desires as you flip through the cards of Turn On. The Game every move, every kiss and every whisper of your secret desires feel like a thrilling discovery."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'Section2.css' | asset_url | stylesheet_tag }}
+
+<div class="section2Div">
+  <h1 class="section2Heading">
+    {{ section.settings.heading_text }}
+  </h1>
+  <div class="section2Content">
+    <p>
+      {{ section.settings.content_text }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="five-right">
+  <br>
+  <p class="paraFive">{{ section.settings.paraFive }}</p>
+  <br>
+  <p class="paraFiveOne">{{ section.settings.paraFiveOne }}</p>
+  <br>
+  <p class="paraFiveTwo">{{ section.settings.paraFiveTwo }}</p>
+  <br>
+  <p class="paraFiveThree">{{ section.settings.paraFiveThree }}</p>
+  <br>
+  <p class="paraFiveFour">{{ section.settings.paraFiveFour }}</p>
+  <br>
+  <p class="paraFiveFive">{{ section.settings.paraFiveFive }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "testbanner3-right",
+  "tag": "section",
+  "class": "testbanner3-right",
+  "settings": [
+    {
+      "type": "text",
+      "id": "paraFive",
+      "label": "Heading"
+    },
+     {
+           "type": "text",
+           "id": "paraFiveOne",
+           "label": "Para 1"
+         },
+    {
+           "type": "text",
+           "id": "paraFiveTwo",
+           "label": "Para 2"
+         },
+    {
+           "type": "text",
+           "id": "paraFiveThree",
+           "label": "Para 3"
+         },
+    {
+           "type": "text",
+           "id": "paraFiveFour",
+           "label": "Para 4"
+         },
+    {
+           "type": "text",
+           "id": "paraFiveFive",
+           "label": "Para 5"
+         }
+  ]
+}
+{% endschema %}
